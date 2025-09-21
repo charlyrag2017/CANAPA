@@ -1889,13 +1889,27 @@
         });
         
         // Menú móvil
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-// Alternativa: Mostrar/ocultar menú horizontal como dropdown
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const closeMenuBtn = document.getElementById('close-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+
 mobileMenuBtn.addEventListener('click', function() {
-    document.getElementById('nav-menu').classList.toggle('active');
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden';
 });
-        const closeMenuBtn = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
+
+closeMenuBtn.addEventListener('click', function() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// Cerrar menú al hacer clic en un enlace
+document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
         
         mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.add('active');
