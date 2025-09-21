@@ -1,0 +1,1992 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANAPA - Derivados del Cañamo de Argentina</title>
+    <style>
+        :root {
+            --verde-oscuro: #2e7d32;
+            --verde-medio: #4caf50;
+            --verde-claro: #c8e6c9;
+            --beige: #f5f5dc;
+            --marron: #8d6e63;
+            --celeste: #e3f2fd;
+            --gris-claro: #f8f9fa;
+            --amarillo: #ffeb3b;
+            --naranja: #ff9800;
+            --azul-whatsapp: #25D366;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--beige);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: var(--verde-medio);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Botón de WhatsApp flotante con imagen */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--azul-whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            padding: 0;
+        }
+        
+        .whatsapp-icon {
+            width: 32px;
+            height: 32px;
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--verde-oscuro);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            color: var(--verde-medio);
+            font-size: 2rem;
+        }
+        
+        /* Menú de navegación */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--verde-oscuro);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--verde-medio);
+            background-color: var(--verde-claro);
+        }
+        
+        .nav-link.active {
+            color: white;
+            background-color: var(--verde-medio);
+        }
+        
+        /* Carrito de compras en el header */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--naranja);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Menú móvil */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--verde-oscuro);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--verde-oscuro);
+            cursor: pointer;
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            margin-top: 3rem;
+        }
+        
+        .mobile-nav-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-nav-links a {
+            color: var(--verde-oscuro);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.7rem 1rem;
+            border-radius: 5px;
+            display: block;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: white;
+            background-color: var(--verde-medio);
+        }
+        
+        .mobile-contact-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 0.8rem;
+            background-color: var(--verde-medio);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1591348131719-8c1a2f8e35d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46,125,50,0.8) 0%, rgba(76,175,80,0.6) 100%);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--verde-medio);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn:hover {
+            background-color: var(--verde-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--verde-medio);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--verde-medio);
+        }
+        
+        /* Productos con sistema de compra */
+        .products-section {
+            padding: 4rem 1rem;
+            background-color: white;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--verde-oscuro);
+            position: relative;
+            padding-top: 1.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--verde-medio);
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-purchase-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-purchase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-purchase-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--verde-medio);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-info-container {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-title {
+            color: var(--verde-oscuro);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--marron);
+            margin: 1.5rem 0;
+        }
+        
+        .product-features {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+        
+        .product-features li {
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .purchase-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .buy-now-btn {
+            background-color: var(--verde-medio);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            display: block;
+            box-shadow: 0 3px 10px rgba(76,175,80,0.3);
+        }
+        
+        .buy-now-btn:hover {
+            background-color: var(--verde-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+        }
+        
+        .add-to-cart-btn {
+            background-color: transparent;
+            color: var(--verde-medio);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: 2px solid var(--verde-medio);
+            cursor: pointer;
+            display: block;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: var(--verde-claro);
+            transform: translateY(-2px);
+        }
+        
+        /* Opciones de compra */
+        .purchase-options-section {
+            background: linear-gradient(to right, var(--celeste), #bbdefb);
+            padding: 4rem 1rem;
+        }
+        
+        .purchase-options-container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .option-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--verde-medio);
+        }
+        
+        .option-card h3 {
+            color: var(--verde-medio);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .option-features {
+            text-align: left;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-features li {
+            margin-bottom: 0.7rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .option-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--marron);
+            margin: 1.5rem 0;
+        }
+        
+        /* Galería de imágenes */
+        .images-gallery {
+            padding: 4rem 1rem;
+            background-color: var(--beige);
+        }
+        
+        .images-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .image-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            height: 200px;
+            position: relative;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-card:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 0.8rem;
+            color: white;
+            transform: translateY(15px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .image-card:hover .image-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .image-overlay h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .image-overlay p {
+            font-size: 0.85rem;
+        }
+        
+        /* Sobre Nosotros */
+        .about {
+            background: linear-gradient(to right, var(--verde-claro), #e8f5e9);
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-text h3 {
+            color: var(--verde-oscuro);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .about-img-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            height: 250px;
+        }
+        
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-img-container:hover .about-img {
+            transform: scale(1.05);
+        }
+        
+        /* Beneficios del Cañamo (reemplaza Métodos de Pago en el botón principal) */
+        .benefits-section {
+            background: linear-gradient(to right, var(--verde-claro), #c8e6c9);
+            padding: 5rem 1rem;
+        }
+        
+        .benefits-container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--verde-medio);
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-card h3 {
+            color: var(--verde-oscuro);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .benefit-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        /* Preguntas Frecuentes */
+        .faq-section {
+            padding: 4rem 1rem;
+            background-color: white;
+        }
+        
+        .faq-container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--beige);
+            margin-bottom: 1.2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            background-color: var(--verde-claro);
+            color: var(--verde-oscuro);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            background-color: white;
+        }
+        
+        .faq-answer-content {
+            padding: 1.2rem 0;
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        /* Métodos de pago */
+        .payment-methods {
+            background: linear-gradient(to right, var(--celeste), #e3f2fd);
+            padding: 4rem 1rem;
+        }
+        
+        .payment-container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--verde-medio);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--verde-medio);
+        }
+        
+        .payment-card h3 {
+            color: var(--verde-oscuro);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .payment-details {
+            text-align: left;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-details li {
+            margin-bottom: 0.7rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer con íconos de redes sociales */
+        footer {
+            background: linear-gradient(to bottom, var(--verde-oscuro), #1b5e20);
+            color: white;
+            padding: 3rem 1rem 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.4rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: var(--verde-claro);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-column a {
+            color: var(--verde-claro);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+        }
+        
+        .social-link:hover {
+            background-color: var(--verde-medio);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--verde-claro);
+        }
+        
+        /* Carrito de compras */
+        .cart-preview {
+            position: fixed;
+            top: 80px;
+            right: 10px;
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 320px;
+            max-height: 70vh;
+            overflow-y: auto;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .cart-preview.show {
+            display: block;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--verde-claro);
+        }
+        
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .cart-item-info {
+            flex-grow: 1;
+            min-width: 150px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
+        }
+        
+        .quantity-btn {
+            background-color: var(--verde-claro);
+            border: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--verde-oscuro);
+            font-size: 0.8rem;
+        }
+        
+        .cart-item-price {
+            font-weight: 600;
+            color: var(--verde-oscuro);
+            margin-left: 0.8rem;
+            white-space: nowrap;
+        }
+        
+        .remove-item {
+            color: #f44336;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 0.8rem;
+        }
+        
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--verde-oscuro);
+            text-align: right;
+            margin: 1.2rem 0;
+            padding-top: 0.8rem;
+            border-top: 2px solid var(--verde-claro);
+        }
+        
+        .cart-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .continue-shopping {
+            background-color: var(--verde-claro);
+            color: var(--verde-oscuro);
+            padding: 0.7rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            flex-grow: 1;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        .checkout-btn {
+            background-color: var(--verde-medio);
+            color: white;
+            padding: 0.7rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            flex-grow: 1;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        /* Media Queries para tabletas */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .products-grid, .options-grid, .payment-grid, .benefits-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .images-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        /* Media Queries para escritorio */
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .about-img-container {
+                height: 400px;
+            }
+            
+            .image-card {
+                height: 250px;
+            }
+        }
+        
+        /* Media Queries para pantallas grandes */
+        @media (min-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+            
+            .cart-preview {
+                right: 20px;
+                width: 350px;
+            }
+        }
+        
+        /* Ajustes específicos para móviles */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0.8rem 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                height: 60vh;
+                min-height: 350px;
+            }
+            
+            .hero-content {
+                padding: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 0.7rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .product-image-container {
+                height: 200px;
+            }
+            
+            .product-title {
+                font-size: 1.2rem;
+            }
+            
+            .product-price {
+                font-size: 1.4rem;
+            }
+            
+            .buy-now-btn, .add-to-cart-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.95rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 80px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .scroll-to-top {
+                bottom: 20px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .cart-preview {
+                right: 5%;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para volver al inicio -->
+    <a href="#inicio" class="scroll-to-top" id="scrollToTop">↑</a>
+    
+    <!-- Botón de WhatsApp flotante con imagen -->
+    <a href="https://wa.me/541112345678" class="whatsapp-float" target="_blank" title="Contactanos por WhatsApp">
+        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+    </a>
+    
+    <header>
+        <div class="header-container">
+            <a href="#inicio" class="logo-container">
+                <a href="#inicio" class="logo-container">
+            <img src="imagenes/logo-canapa.png" alt="Logo CANAPA Argentina" class="logo-image" style="height: 75px;">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#productos" class="nav-link">Productos</a></li>
+                <li><a href="#galeria" class="nav-link">Galería</a></li>
+                <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+                <li><a href="#faq" class="nav-link">Preguntas Frecuentes</a></li>
+                <li><a href="#recetario" class="nav-link">Recetario</a></li>
+		<li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li class="cart-icon" id="cartIcon">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Menú móvil compacto -->
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-menu" id="close-menu">✕</button>
+            <ul class="mobile-nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#faq">Preguntas Frecuentes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#" class="mobile-contact-btn" id="mobileCartBtn">🛒 Carrito (0)</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Derivados Naturales del Cañamo de Argentina</h1>
+            <p>Productos 100% orgánicos, sostenibles y de alta calidad cultivados en suelo argentino para tu bienestar y el del planeta.</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn">Descubre Nuestros Productos</a>
+                <a href="#beneficios" class="btn btn-outline">Beneficios del Cañamo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos" class="products-section">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <p style="text-align: center; font-size: 1rem; color: #555; margin-bottom: 2rem;">
+    <strong>¿Quieres saber mas sobre Panes, Fideos o galletitas de cañamo?</strong><br>
+    ¡Escríbenos por WhatsApp y dinos cuál te gustaría probar primero!
+</p>
+	<div class="products-grid">
+            <div class="product-purchase-card">
+                <div class="product-image-container">
+                    <img src="imagenes/harina.png" alt="Harina de Cañamo Orgánica" class="product-image">
+                    <span class="product-badge">¡Producto Estrella!</span>
+                </div>
+                <div class="product-info-container">
+                    <h3 class="product-title">Harina de Cañamo Orgánica</h3>
+                    <p class="product-description">Harina 100% orgánica, rica en proteínas y fibra, ideal para tus recetas saludables. Cultivada en Argentina con métodos sostenibles.</p>
+                    <ul class="product-features">
+                        <li>✅ 100% orgánica y natural</li>
+                        <li>✅ Libre de gluten y aditivos</li>
+                        <li>✅ Rica en proteínas y omega 3</li>
+                        <li>✅ Cultivada en Argentina</li>
+                    </ul>
+                    <div class="product-price">$1.200</div>
+                    <div class="purchase-buttons">
+                        <button class="buy-now-btn" onclick="comprarProducto('Harina de Cañamo', 1200)">Comprar Ahora</button>
+                        <button class="add-to-cart-btn" onclick="agregarAlCarrito('Harina de Cañamo', 1200)">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-purchase-card">
+    <div class="product-image-container">
+        <img src="imagenes/panes.jpg" alt="Panes Saborizados con Harina de Cañamo" class="product-image">
+        <span class="product-badge" style="background-color: #ff9800;">Próximamente</span>
+    </div>
+    <div class="product-info-container">
+        <h3 class="product-title">Panes Saborizados</h3>
+        <p class="product-description">Deliciosos panes artesanales elaborados con nuestra harina de cañamo orgánica. Variedades: integral, oliva, nueces y más. ¡Pronto en tu mesa!</p>
+        <ul class="product-features">
+            <li>✅ 100% harina de cañamo orgánica</li>
+            <li>✅ Sin conservantes ni aditivos</li>
+            <li>✅ Elaboración artesanal</li>
+            <li>✅ Próximamente disponible</li>
+        </ul>
+        <div class="product-price">Pronto</div>
+        <div class="purchase-buttons">
+            <button class="buy-now-btn" style="background-color: #ff9800;" onclick="alert('¡Este producto estará disponible pronto! Escríbenos por WhatsApp para más información.')">Más información</button>
+        </div>
+    </div>
+</div>
+            
+            <div class="product-purchase-card">
+    <div class="product-image-container">
+        <img src="imagenes/fideos-galletitas.png" alt="Fideos y Galletitas de Cañamo" class="product-image">
+        <span class="product-badge" style="background-color: #ff9800;">Próximamente</span>
+    </div>
+    <div class="product-info-container">
+        <h3 class="product-title">Fideos y Galletitas</h3>
+        <p class="product-description">Fideos secos (nidos, tirabuzón, penne) y galletitas saborizadas, todos hechos con harina de cañamo. ¡Ideal para snacks saludables y comidas rápidas!</p>
+        <ul class="product-features">
+            <li>✅ Libre de gluten</li>
+            <li>✅ Alto contenido de proteínas</li>
+            <li>✅ Sabor natural y delicioso</li>
+            <li>✅ Próximamente disponible</li>
+        </ul>
+        <div class="product-price">Pronto</div>
+        <div class="purchase-buttons">
+            <button class="buy-now-btn" style="background-color: #ff9800;" onclick="alert('¿Quieres que lancemos estos productos? ¡Avísanos por WhatsApp!')">¡Avísanos por WhatsApp!</button>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section id="galeria" class="images-gallery">
+        <h2 class="section-title">Galería de Imágenes</h2>
+        <div class="images-grid">
+            <div class="image-card">
+                <img src="imagenes/galeria-cultivo.jpg" alt="Cultivo de cañamo en Argentina" class="gallery-image">
+                <div class="image-overlay">
+                    <h4>Cultivo en Argentina</h4>
+                    <p>Nuestro cañamo se cultiva en tierras argentinas con métodos orgánicos y sostenibles.</p>
+                </div>
+            </div>
+            
+            <div class="image-card">
+ 		<img src="imagenes/galeria-harina.jpg" alt="Proceso de molienda de cañamo" class="gallery-image">
+                <div class="image-overlay">
+                    <h4>Harina de Cañamo</h4>
+                    <p>100% orgánica, rica en proteínas y fibra. Perfecta para tus recetas saludables.</p>
+                </div>
+            </div>
+            
+           <div class="image-card" onclick="location.href='#recetario';" style="cursor: pointer;">
+    <img src="imagenes/galeria-recetas.jpg" alt="Recetas con harina de cañamo" class="gallery-image">
+    <div class="image-overlay">
+        <h4>Recetario Creativo</h4>
+        <p>Descubre recetas deliciosas con harina de cañamo. ¡Haz clic para verlas!</p>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <section id="beneficios" class="benefits-section">
+        <div class="benefits-container">
+            <h2 class="section-title">Beneficios del Cañamo</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1rem;">Descubre por qué el cañamo es considerado un superalimento y cómo puede mejorar tu salud y bienestar.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💪</div>
+                    <h3>Proteína Completa</h3>
+                    <p>El cañamo contiene los 9 aminoácidos esenciales que nuestro cuerpo necesita pero no puede producir. ¡Ideal para deportistas, veganos y cualquier persona que busque una nutrición óptima!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Omega 3 y 6</h3>
+                    <p>Con una proporción perfecta de ácidos grasos esenciales (3:1), el cañamo ayuda a reducir la inflamación, mejora la salud cerebral y cardiovascular, y fortalece el sistema inmunológico.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌿</div>
+                    <h3>Sostenibilidad</h3>
+                    <p>El cañamo es una de las plantas más sostenibles del planeta: requiere poca agua, mejora la calidad del suelo, captura CO2 y no necesita pesticidas. ¡Una elección responsable con el medio ambiente!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">¿Cuál es la diferencia entre "Comprar Ahora" y "Agregar al Carrito"?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Comprar Ahora:</strong> Te lleva directamente al proceso de pago con solo ese producto en tu pedido. Es ideal si estás seguro de querer comprar solo ese artículo y quieres hacerlo rápidamente.</p>
+                        <p><strong>Agregar al Carrito:</strong> Añade el producto a tu carrito sin iniciar el proceso de pago. Puedes seguir navegando por la tienda, agregar más productos y luego proceder al pago con todos los artículos juntos. Es perfecto si estás considerando comprar varios productos o quieres comparar opciones antes de finalizar tu compra.</p>
+                        <p>¡Ambas opciones son seguras y te permiten completar tu compra con éxito!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">¿La harina de cañamo contiene THC?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>No, nuestra harina de cañamo está hecha de semillas de cañamo industrial que contienen menos del 0.3% de THC, por lo que no tiene efectos psicoactivos. Es completamente legal y segura para todo tipo de consumidores, incluyendo niños y mujeres embarazadas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">¿Cómo puedo usar la harina de cañamo en mis recetas?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Puedes reemplazar hasta un 25% de la harina común en tus recetas por harina de cañamo para añadir proteínas y nutrientes. También puedes usarla en batidos, yogures, como topping para avena o ensaladas, o incluso en recetas sin cocción como barras energéticas. Su sabor ligeramente nuez combina perfectamente con ingredientes dulces y salados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pagos" class="payment-methods">
+        <div class="payment-container">
+            <h2 class="section-title">Métodos de Pago</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1rem;">Ofrecemos múltiples opciones de pago para tu comodidad y seguridad. Elige la que mejor se adapte a tus necesidades.</p>
+            
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <div class="payment-icon">💳</div>
+                    <h3>Mercado Pago</h3>
+                    <ul class="payment-details">
+                        <li>Tarjetas de crédito y débito</li>
+                        <li>Cuotas sin interés (consultar promociones)</li>
+                        <li>Pago en efectivo en puntos de pago</li>
+                        <li>100% seguro y protegido</li>
+                    </ul>
+                    <a href="#productos" class="buy-now-btn">Usar Mercado Pago</a>
+                </div>
+                
+                <div class="payment-card">
+                    <div class="payment-icon">🏦</div>
+                    <h3>Transferencia Bancaria</h3>
+                    <ul class="payment-details">
+                        <li>Transferencias a bancos argentinos</li>
+                        <li>Banco Nación, Galicia, Santander, entre otros</li>
+                        <li>CBU y alias disponibles al confirmar pedido</li>
+                        <li>Descuento del 5% por pago con transferencia</li>
+                    </ul>
+                    <a href="#contacto" class="buy-now-btn">Solicitar Datos Bancarios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="about">
+        <h2 class="section-title">Sobre CANAPA Argentina</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Comprometidos con la naturaleza y tu bienestar</h3>
+                <p>En CANAPA Argentina, nos dedicamos a la difusión y comercialización de productos derivados del cañamo, una planta milenaria con múltiples beneficios para la salud y el medio ambiente, cultivada en suelo argentino.</p>
+                <p>Nuestro objetivo es promover un estilo de vida más saludable y sostenible, ofreciendo productos de la más alta calidad, cultivados de forma orgánica y respetuosa con el entorno en nuestras tierras argentinas.</p>
+                <a href="#contacto" class="btn">Contáctanos</a>
+            </div>
+            <div class="about-img-container">
+                <img src="imagenes/nosotros.png" alt="CANAPA Argentina - Nuestro Equipo y Cultivo" class="about-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="products-section">
+        <h2 class="section-title">Contáctanos</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1rem; margin-bottom: 1.5rem;">¿Tienes preguntas sobre nuestros productos o quieres hacer un pedido mayorista? Estamos aquí para ayudarte.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                    <h3 style="color: var(--verde-oscuro); margin-bottom: 0.8rem; font-size: 1.1rem;">📧 Email</h3>
+                    <p style="font-size: 0.95rem;">info@canapa.com.ar</p>
+                </div>
+                
+                <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                    <h3 style="color: var(--verde-oscuro); margin-bottom: 0.8rem; font-size: 1.1rem;">📞 Teléfono</h3>
+                    <p style="font-size: 0.95rem;">+54 11 1234-5678</p>
+                </div>
+            </div>
+            
+            <a href="https://wa.me/541112345678" class="btn" style="background-color: #25D366; margin: 0.8rem 0;">
+                <svg style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </section>
+	<section id="recetario" class="products-section">
+    <h2 class="section-title">Recetario con Harina de Cañamo</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1rem;">
+        Descubre cómo usar nuestra harina de cañamo en recetas deliciosas, saludables y fáciles de preparar.
+    </p>
+    <div class="products-grid">
+        <div class="product-purchase-card">
+            <div class="product-image-container">
+                <img src="imagenes/receta-pan.jpg" alt="Pan de Cañamo" class="product-image">
+            </div>
+            <div class="product-info-container">
+                <h3 class="product-title">Pan de Cañamo</h3>
+                <p class="product-description">Un pan artesanal, esponjoso y lleno de nutrientes. Ideal para el desayuno o merienda.</p>
+                <button class="buy-now-btn" onclick="alert('Receta: Mezcla 250g de harina de cañamo con 250g de harina común, 1 cucharadita de sal, 1 cucharadita de levadura, 300ml de agua tibia y 2 cucharadas de aceite de oliva. Amasa, deja leudar 1 hora y hornea a 180°C por 30 minutos.')">Ver Receta</button>
+            </div>
+        </div>
+        <div class="product-purchase-card">
+            <div class="product-image-container">
+                <img src="imagenes/receta-galletas.jpg" alt="Galletas de Cañamo" class="product-image">
+            </div>
+            <div class="product-info-container">
+                <h3 class="product-title">Galletas de Cañamo</h3>
+                <p class="product-description">Crujientes por fuera, tiernas por dentro. Perfectas para acompañar un té o café.</p>
+                <button class="buy-now-btn" onclick="alert('Receta: Mezcla 200g de harina de cañamo, 100g de azúcar, 1 huevo, 100g de mantequilla derretida y 1 cucharadita de esencia de vainilla. Forma bolitas, aplasta ligeramente y hornea a 170°C por 12 minutos.')">Ver Receta</button>
+            </div>
+        </div>
+        <div class="product-purchase-card">
+            <div class="product-image-container">
+                <img src="imagenes/receta-fideos.jpg" alt="Fideos de Cañamo" class="product-image">
+            </div>
+            <div class="product-info-container">
+                <h3 class="product-title">Fideos de Cañamo</h3>
+                <p class="product-description">Fideos caseros con un toque nutricional extra. Combina con tu salsa favorita.</p>
+                <button class="buy-now-btn" onclick="alert('Receta: Mezcla 300g de harina de cañamo con 2 huevos y una pizca de sal. Amasa, deja reposar 30 minutos, estira y corta en tiras. Cocina en agua hirviendo por 3-5 minutos.')">Ver Receta</button>
+            </div>
+        </div>
+    </div>
+</section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>CANAPA Argentina</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Difusión y comercialización de derivados del cañamo cultivado en Argentina. Productos naturales para un estilo de vida saludable y sostenible.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                            <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="#pagos">Métodos de pago</a></li>
+                    <li><a href="#contacto">Envíos y entregas</a></li>
+                    <li><a href="#faq">Política de devoluciones</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 CANAPA Argentina. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Carrito de compras -->
+    <div class="cart-preview" id="cartPreview">
+        <div class="cart-header">
+            <h4 style="font-size: 1.1rem;">Carrito de Compras</h4>
+            <span id="closeCart" style="cursor:pointer; font-weight:bold; font-size: 1.2rem;">✕</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p id="emptyCartMessage">Tu carrito está vacío</p>
+        </div>
+        <div class="cart-total" id="cartTotal">
+            Total: $0
+        </div>
+        <div class="cart-actions">
+            <button class="continue-shopping" id="continueShopping">Seguir Comprando</button>
+            <button class="checkout-btn" id="checkoutBtn">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script>
+        // Carrito de compras
+        let cart = [];
+        
+        function agregarAlCarrito(nombre, precio) {
+            // Verificar si el producto ya está en el carrito
+            const existingProduct = cart.find(item => item.nombre === nombre);
+            
+            if (existingProduct) {
+                existingProduct.cantidad += 1;
+            } else {
+                cart.push({ nombre, precio, cantidad: 1 });
+            }
+            
+            actualizarCarrito();
+            mostrarCarrito();
+        }
+        
+        function comprarProducto(nombre, precio) {
+            // Limpiar carrito y agregar solo este producto
+            cart = [{ nombre, precio, cantidad: 1 }];
+            actualizarCarrito();
+            mostrarCarrito();
+            
+            // Simular redirección a checkout
+            setTimeout(() => {
+                alert(`Procediendo directamente al pago de ${nombre} por $${precio}`);
+                document.getElementById('cartPreview').classList.add('show');
+            }, 300);
+        }
+        
+        function actualizarCarrito() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.getElementById('cartCount');
+            const mobileCartBtn = document.getElementById('mobileCartBtn');
+            
+            // Actualizar contador
+            const totalItems = cart.reduce((total, item) => total + item.cantidad, 0);
+            cartCount.textContent = totalItems;
+            if (mobileCartBtn) {
+                mobileCartBtn.textContent = `🛒 Carrito (${totalItems})`;
+            }
+            
+            // Si el carrito está vacío
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p id="emptyCartMessage">Tu carrito está vacío</p>';
+                cartTotal.textContent = 'Total: $0';
+                return;
+            }
+            
+            // Limpiar carrito
+            cartItems.innerHTML = '';
+            
+            let total = 0;
+            
+            // Agregar cada item al carrito
+            cart.forEach((item, index) => {
+                const itemTotal = item.precio * item.cantidad;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <strong>${item.nombre}</strong>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="actualizarCantidad(${index}, -1)">-</button>
+                            <span>${item.cantidad}</span>
+                            <button class="quantity-btn" onclick="actualizarCantidad(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="cart-item-price">$${itemTotal}</div>
+                    <div class="remove-item" onclick="eliminarItem(${index})">🗑️</div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `Total: $${total}`;
+        }
+        
+        function actualizarCantidad(index, change) {
+            cart[index].cantidad += change;
+            
+            // Si la cantidad es 0, eliminar el item
+            if (cart[index].cantidad <= 0) {
+                cart.splice(index, 1);
+            }
+            
+            actualizarCarrito();
+        }
+        
+        function eliminarItem(index) {
+            cart.splice(index, 1);
+            actualizarCarrito();
+        }
+        
+        function mostrarCarrito() {
+            const cartPreview = document.getElementById('cartPreview');
+            cartPreview.classList.add('show');
+            
+            // Ocultar carrito después de 5 segundos si no se interactúa
+            setTimeout(() => {
+                if (!cartPreview.matches(':hover')) {
+                    cartPreview.classList.remove('show');
+                }
+            }, 5000);
+        }
+        
+        // Event listeners
+        document.getElementById('cartIcon').addEventListener('click', function() {
+            document.getElementById('cartPreview').classList.toggle('show');
+        });
+        
+        document.getElementById('closeCart').addEventListener('click', function() {
+            document.getElementById('cartPreview').classList.remove('show');
+        });
+        
+        document.getElementById('continueShopping').addEventListener('click', function() {
+            document.getElementById('cartPreview').classList.remove('show');
+        });
+        
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            // Mostrar opciones de pago
+            let mensaje = 'Seleccione método de pago:\n\n1. 💳 Mercado Pago\n2. 🏦 Transferencia Bancaria\n\n';
+            mensaje += 'Productos:\n';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.precio * item.cantidad;
+                total += itemTotal;
+                mensaje += `- ${item.nombre} x${item.cantidad}: $${itemTotal}\n`;
+            });
+            
+            mensaje += `\nTotal: $${total}\n\nSeleccione su método de pago para continuar.`;
+            
+            const metodoPago = prompt(mensaje, "1");
+            
+            if (metodoPago === "1") {
+                alert('Serás redirigido a Mercado Pago para completar tu compra.');
+                // Aquí iría la redirección a Mercado Pago
+            } else if (metodoPago === "2") {
+                alert('Te enviaremos los datos bancarios a tu email para realizar la transferencia.');
+                // Aquí se enviarían los datos bancarios
+            } else {
+                alert('Método de pago no válido.');
+                return;
+            }
+            
+            // Vaciar carrito después de iniciar proceso de compra
+            cart = [];
+            actualizarCarrito();
+        });
+        
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Cerrar menú móvil si está abierto
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Botón de scroll al inicio
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const faqAnswer = this.nextElementSibling;
+                
+                // Cerrar todos los FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').style.maxHeight = null;
+                        item.querySelector('.faq-question').classList.remove('active');
+                    }
+                });
+                
+                // Toggle del FAQ actual
+                faqItem.classList.toggle('active');
+                this.classList.toggle('active');
+                
+                if (faqItem.classList.contains('active')) {
+                    faqAnswer.style.maxHeight = faqAnswer.scrollHeight + "px";
+                    faqAnswer.style.padding = "1.2rem 1.5rem";
+                } else {
+                    faqAnswer.style.maxHeight = null;
+                    faqAnswer.style.padding = "0 1.5rem";
+                }
+            });
+        });
+        
+        // Agregar clase active al hacer scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Agregar clase active al cargar la página
+        window.addEventListener('load', function() {
+            document.querySelector('.nav-link[href="#inicio"]').classList.add('active');
+        });
+        
+        // Mejora para móviles: cerrar menú al hacer scroll
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth < 768) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Mejora para móviles: cerrar menú al cambiar orientación
+        window.addEventListener('orientationchange', function() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+</body>
+</html>
+```
